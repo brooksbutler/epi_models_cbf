@@ -7,7 +7,7 @@ def Laplacian(A):
     for i in range(n):
         for j in range(n):
             if i==j:
-                L[i,j] = np.sum(A[i,:])
+                L[i,j] = np.sum(A[:,j])
             else:
                 L[i,j] = -A[i,j]
     return L

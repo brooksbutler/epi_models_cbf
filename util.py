@@ -1,5 +1,5 @@
 import numpy as np
-
+import pandas as pd
 
 def Laplacian(A):
     L = np.zeros(A.shape)
@@ -12,9 +12,8 @@ def Laplacian(A):
                 L[i,j] = -A[i,j]
     return L
 
-def x_dot(x,Theta, B, U_l, V_l):
-    x_d = ((Theta + U_l) + np.kron(x.T,np.eye(len(x)))@(B-V_l))@x
-    return x_d 
-
-
+def advance_flatten(M):
+    indices = np.array(list(np.ndindex(M.shape)))
+    df = pd.DataFrame({'val': M.flatten(), 'd0': indices[:, 0], 'd1': indices[:, 1]})
+    return df
 
